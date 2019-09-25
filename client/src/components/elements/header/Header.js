@@ -11,7 +11,7 @@ class App extends React.Component {
     return (
       <AppBar color="primary" position="static">
         <Toolbar>
-          <TypoGraphy variant="title" color="inherit">
+          <TypoGraphy variant="h6" color="inherit">
             News Monitor
           </TypoGraphy>
           <NavBar />

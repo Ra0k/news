@@ -4,14 +4,21 @@ import { setContext } from 'apollo-link-context';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 
+
 const httpLink = createHttpLink({
   uri: 'http://localhost:8001/graphql/',
   //fetch: customFetch
 });
 
 
+const customFetch = (uri, options) => {
+  this.refreshingPromise = null;
+  return fetch(uri, options);
+}
+
+
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('token');
+  const token = AuthService.getToken();
   return {
     headers: {
       ...headers,
